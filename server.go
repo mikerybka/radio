@@ -24,10 +24,10 @@ func NewServer() http.Handler {
 	})
 	radio.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html")
-		w.Write([]byte(`<audio controls autoplay>
+		w.Write([]byte(`<div><audio controls autoplay>
 			<source src="/live.mp3" type="audio/mpeg">
 			Your browser does not support the audio element.
-		</audio>Refresh if the stream stops.`))
+		</audio></div><p>Refresh if the stream stops.</p>`))
 	})
 	return radio
 }
