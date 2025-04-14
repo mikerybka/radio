@@ -27,7 +27,7 @@ func NewServer() http.Handler {
 		w.Write([]byte(`<audio controls autoplay>
 			<source src="/live.mp3" type="audio/mpeg">
 			Your browser does not support the audio element.
-		</audio>`))
+		</audio>Refresh if the stream stops.`))
 	})
 	return radio
 }
