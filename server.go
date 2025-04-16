@@ -1,6 +1,7 @@
 package radio
 
 import (
+	_ "embed"
 	"net/http"
 	"os"
 	"os/exec"
@@ -29,5 +30,11 @@ func NewServer() http.Handler {
 			Your browser does not support the audio element.
 		</audio></div><p>Refresh if the stream stops.</p>`))
 	})
+	radio.HandleFunc("GET /play", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(playHTML)
+	})
 	return radio
 }
+
+//go:embed play.html
+var playHTML []byte
